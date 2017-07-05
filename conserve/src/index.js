@@ -7,6 +7,11 @@ import thunk from 'redux-thunk';
 import rootReducer from './rootReducer'
 import { composeWithDevTools} from 'redux-devtools-extension';
 import { Provider } from 'react-redux';
+import {
+  BrowserRouter as Router,
+  Route,
+  Link
+} from 'react-router-dom';
 // import registerServiceWorker from './registerServiceWorker';
 
 const store = createStore(
@@ -17,7 +22,12 @@ const store = createStore(
 );
 
 ReactDOM.render(
-  <Provider store={store}>
-  <App />
-  </Provider>, document.getElementById('root'));
+  <Router>
+    <Provider store={store}>
+      <div className="ui container">
+        <Route path='/' component={App} />
+        
+      </div>
+    </Provider>
+  </Router>, document.getElementById('root'));
 // registerServiceWorker();
