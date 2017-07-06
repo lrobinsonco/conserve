@@ -6,7 +6,7 @@ import {
   Route,
   Link
 }from 'react-router-dom';
-
+import OrgsPage from './components/OrgsPage';
 import './App.css';
 
 class App extends Component {
@@ -20,6 +20,7 @@ class App extends Component {
         <p className="App-intro">
           <Link to="orgs">Organizations</Link>
         </p>
+        <Route pattern="/orgs" component={OrgsPage}/>
       </div>
     );
   }
