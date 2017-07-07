@@ -1,8 +1,11 @@
 import express from 'express';
-import mongodb from 'mongodb'
+import mongodb from 'mongodb';
+import cors from 'cors';
 
 const app = express();
 const dbUrl = 'mongodb://localhost/crudwithredux';
+
+app.use(cors())
 
 mongodb.MongoClient.connect(dbUrl, function(err, db){
 
