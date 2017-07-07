@@ -4,23 +4,23 @@ import logo from './logo.svg';
 import {
   BrowserRouter as Router,
   Route,
-  Link
+  NavLink
 }from 'react-router-dom';
 import OrgsPage from './OrgsPage';
+import OrgsForm from './OrgsForm';
 import './App.css';
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
+      <div className="ui container">
+        <div className="ui three item menu">
+          <NavLink className="item" activeClassName="active" to="/">Home</NavLink>
+          <NavLink className="item" activeClassName="active" to="/orgs">Organizations</NavLink>
+          <NavLink className="item" activeClassName="active" to="/orgs/new">New organization</NavLink>
         </div>
-        <p className="App-intro">
-          <Link to="orgs">Organizations</Link>
-        </p>
-        <Route path="/orgs" component={OrgsPage}/>
+        <Route exact path="/orgs" component={OrgsPage}/>
+        <Route path="/orgs/new" component={OrgsForm}/>
       </div>
     );
   }
