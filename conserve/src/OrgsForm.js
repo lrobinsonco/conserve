@@ -9,7 +9,16 @@ class OrgsForm extends React.Component {
   }
 
 handleChange = (e) => {
-    this.setState({ [e.target.name]: e.target.value })
+  if (!!this.state.errors[e.target.name]){
+    let errors = Object.assign({}, this.state.errors);
+    delete errors[e.target.name];
+      this.setState({
+        [e.target.name]: e.target.value,
+        errors
+     });
+   } else {
+     this.setState({ [e.target.name]: e.target.value })
+   }
   }
 
 handleSubmit = (e) => {
