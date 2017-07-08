@@ -5,7 +5,8 @@ class OrgsForm extends React.Component {
   state = {
     org: "",
     logo: "",
-    errors: {}
+    errors: {},
+    loading: false
   }
 
 handleChange = (e) => {
@@ -28,15 +29,21 @@ handleSubmit = (e) => {
   let errors = {};
   if (this.state.org === '') errors.title = "Cannot be empty";
   if (this.state.logo === '') errors.logo = "Cannot be empty";
-  this.setState({ errors })
+  this.setState({ errors });
+  const isValid = Object.keys(errors).length === 0
 
+  if (isValid) {
+    const { org, logo } = this.state;
+    this.setState({ loading: true });
+    // this.props.saveOrg({ org, logo})
+  }
 }
 
 
 
   render(){
     return (
-      <form className="ui form" onSubmit={this.handleSubmit}>
+      <form className={classnames('ui', 'form', { loading: this.state.loading })} onSubmit={this.handleSubmit}>
         <h1>Add new organization</h1>
 
         <div className={classnames("field", {error: !!this.state.errors.org})}>
