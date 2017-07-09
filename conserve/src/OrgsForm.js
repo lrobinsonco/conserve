@@ -1,5 +1,7 @@
 import React from 'react';
 import classnames from 'classnames';
+import { connect } from 'react-redux';
+import { saveOrg } from './actions';
 
 class OrgsForm extends React.Component {
   state = {
@@ -35,7 +37,10 @@ handleSubmit = (e) => {
   if (isValid) {
     const { org, logo } = this.state;
     this.setState({ loading: true });
-    // this.props.saveOrg({ org, logo})
+    this.props.saveOrg({ org, logo}).then(
+      () => {},
+      (err) => err.response.json().then(({errors}) => this.setState({ errors, loading: false }))
+    )
   }
 }
 
@@ -45,6 +50,8 @@ handleSubmit = (e) => {
     return (
       <form className={classnames('ui', 'form', { loading: this.state.loading })} onSubmit={this.handleSubmit}>
         <h1>Add new organization</h1>
+
+        {!!this.state.errors.global && <div className='ui negative message'><p>{this.state.errors.global}</p></div>}
 
         <div className={classnames("field", {error: !!this.state.errors.org})}>
           <label htmlFor="org">Organization</label>
@@ -80,4 +87,4 @@ handleSubmit = (e) => {
   }
 }
 
-export default OrgsForm;
+export default connect(null, { saveOrg })(OrgsForm);
