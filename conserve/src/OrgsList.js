@@ -2,14 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import OrgCard from './OrgCard';
 
-export default function OrgsList({ orgs }){
+export default function OrgsList({ orgs, deleteOrg }){
   const emptyMessage = (
     <p>There are no organizations here.</p>
   );
 
   const orgsList = (
     <div className="ui four cards">
-      { orgs.map(org => <OrgCard org={org} key={org._id} />)}
+      { orgs.map(org => <OrgCard org={org} key={org._id} deleteOrg={deleteOrg} />)}
     </div>
   );
 
@@ -21,5 +21,6 @@ export default function OrgsList({ orgs }){
 }
 
 OrgsList.propTypes = {
-  orgs: PropTypes.array.isRequired
+  orgs: PropTypes.array.isRequired,
+  deleteOrg: PropTypes.func.isRequired
 }

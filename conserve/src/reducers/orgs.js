@@ -1,4 +1,4 @@
-import { SET_ORGS, ADD_ORG, ORG_FETCHED, ORG_UPDATED } from '../actions';
+import { SET_ORGS, ADD_ORG, ORG_FETCHED, ORG_UPDATED, ORG_DELETED } from '../actions';
 
 export default function orgs(state = [], action = {}){
   switch(action.type){
@@ -7,6 +7,9 @@ export default function orgs(state = [], action = {}){
         ...state,
         action.org
       ];
+
+      case ORG_DELETED:
+        return state.filter(item => item._id !== action.orgId)
 
       case ORG_UPDATED:
       return state.map(item => {

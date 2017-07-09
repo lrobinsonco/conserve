@@ -10,7 +10,7 @@ const dbUrl = 'mongodb://localhost/crudwithredux';
 function validate(data) {
 
   let errors = {};
-  if (data.org === '') errors.title = "Cannot be empty";
+  if (data.org === '') errors.org = "Cannot be empty";
   if (data.logo === '') errors.logo = "Cannot be empty";
   const isValid = Object.keys(errors).length === 0
   return { errors, isValid };
@@ -34,7 +34,7 @@ mongodb.MongoClient.connect(dbUrl, function(err, db) {
         if (err) {
           res.status(500).json({ errors: { global: "Something went wrong"}})
         } else {
-          res.json({ game: result.ops[0] })
+          res.json({ org: result.ops[0] })
         }
       })
     } else {
@@ -54,7 +54,7 @@ mongodb.MongoClient.connect(dbUrl, function(err, db) {
         (err, result) => {
           if (err) { res.status(500).json({ errors: { global: err}}); return; }
 
-          res.json({ game: result.value });
+          res.json({ org: result.value });
         }
       )
     } else {
@@ -67,6 +67,14 @@ mongodb.MongoClient.connect(dbUrl, function(err, db) {
       res.json({ org })
     })
   })
+
+  app.delete('/api/orgs/:_id', (req, res) => {
+    db.collection('orgs').deleteOne({ _id: new mongodb.ObjectId(req.params._id) }, (err, r) => {
+      if (err) { res.status(500).json({ errors: { global: err}}); return; }
+
+      res.json({});
+    })
+  });
 
   app.use((req, res) => {
     res.status(404).json({

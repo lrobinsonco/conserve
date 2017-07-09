@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import OrgsList from './OrgsList';
 import { connect } from 'react-redux';
-import {fetchOrgs} from './actions';
+import {fetchOrgs, deleteOrg} from './actions';
 
 class OrgsPage extends React.Component{
   componentDidMount() {
@@ -13,7 +13,7 @@ class OrgsPage extends React.Component{
       <div>
         <h1>Organizations List</h1>
 
-        <OrgsList orgs={this.props.orgs} />
+        <OrgsList orgs={this.props.orgs} deleteOrg={this.props.deleteOrg} />
       </div>
     );
   }
@@ -21,7 +21,8 @@ class OrgsPage extends React.Component{
 
 OrgsPage.propTypes = {
   orgs: PropTypes.array.isRequired,
-  fetchOrgs: PropTypes.func.isRequired
+  fetchOrgs: PropTypes.func.isRequired,
+  deleteOrg: PropTypes.func.isRequired,
 }
 
 function mapStateToProps(state){
@@ -30,4 +31,4 @@ function mapStateToProps(state){
   }
 }
 
-export default connect(mapStateToProps, {fetchOrgs})(OrgsPage);
+export default connect(mapStateToProps, { fetchOrgs, deleteOrg })(OrgsPage);
