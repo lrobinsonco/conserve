@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import OrgCard from './OrgCard';
 
 export default function OrgsList({ orgs }){
@@ -20,5 +21,5 @@ export default function OrgsList({ orgs }){
 }
 
 OrgsList.propTypes = {
-  orgs: React.PropTypes.array.isRequired
+  orgs: PropTypes.array.isRequired
 }

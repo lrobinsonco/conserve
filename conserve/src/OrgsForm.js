@@ -1,19 +1,27 @@
 import React from 'react';
 import classnames from 'classnames';
-import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom'
-import { saveOrg } from './actions';
+
+
 
 class OrgsForm extends React.Component {
   state = {
-    org: "",
-    logo: "",
+    _id: this.props.org ? this.props.org._id : null,
+    org: this.props.org ? this.props.org.org : '',
+    logo: this.props.org ? this.props.org.logo : '',
     errors: {},
-    loading: false,
-    done: false
+    loading: false
   }
 
-handleChange = (e) => {
+  componentWillReceiveProps = (nextProps) => {
+  this.setState({
+    _id: nextProps.org._id,
+    org: nextProps.org.org,
+    logo: nextProps.org.logo
+  })
+  }
+
+
+  handleChange = (e) => {
   if (!!this.state.errors[e.target.name]){
     let errors = Object.assign({}, this.state.errors);
     delete errors[e.target.name];
@@ -31,20 +39,18 @@ handleSubmit = (e) => {
 
   //validation
   let errors = {};
-  if (this.state.org === '') errors.title = "Cannot be empty";
+  if (this.state.org === '') errors.org = "Cannot be empty";
   if (this.state.logo === '') errors.logo = "Cannot be empty";
   this.setState({ errors });
   const isValid = Object.keys(errors).length === 0
 
   if (isValid) {
-    const { org, logo } = this.state;
+    const { _id, org, logo } = this.state;
     this.setState({ loading: true });
-    this.props.saveOrg({ org, logo}).then(
-      () => { this.setState({ done: true })},
-      (err) => err.response.json().then(({errors}) => this.setState({ errors, loading: false }))
-    )
-  }
-}
+    this.props.saveOrg({ _id, org, logo})
+      .catch((err) => err.response.json().then(({errors}) => this.setState({ errors, loading: false})));
+      }
+    }
 
 
 
@@ -55,7 +61,7 @@ handleSubmit = (e) => {
 
         {!!this.state.errors.global && <div className='ui negative message'><p>{this.state.errors.global}</p></div>}
 
-        <div className={classnames("field", {error: !!this.state.errors.org})}>
+        <div className={classnames('field', { error: !!this.state.errors.org})}>
           <label htmlFor="org">Organization</label>
           <input
             name="org"
@@ -67,7 +73,7 @@ handleSubmit = (e) => {
           />
           <span>{this.state.errors.org}</span>
         </div>
-        <div className={classnames("field", {error: !!this.state.errors.logo})}>
+        <div className={classnames('field', { error: !!this.state.errors.logo})}>
           <label htmlFor="logo">Logo URL</label>
           <input
             name="logo"
@@ -79,7 +85,7 @@ handleSubmit = (e) => {
           <span>{this.state.errors.logo}</span>
         </div>
         <div className="field">
-          {this.state.logo !== '' &&<img src={this.state.logo} alt="logo" className="ui small bordered image" />}
+          {this.state.logo !== '' && <img src={this.state.logo} alt="logo" className="ui small bordered image" />}
         </div>
         <div className="field">
           <button className="ui primary button">Save</button>
@@ -88,10 +94,12 @@ handleSubmit = (e) => {
     )
     return (
       <div>
-        { this.state.done ? <Redirect to="/orgs" /> : form }
+        { form }
       </div>
     );
   }
 }
 
-export default connect(null, { saveOrg })(OrgsForm);
+
+
+export default OrgsForm;

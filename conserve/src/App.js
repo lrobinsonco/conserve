@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+// import logo from './logo.svg';
 
 import {
   BrowserRouter as Router,
   Route,
-  NavLink
+  Link
 }from 'react-router-dom';
 import OrgsPage from './OrgsPage';
-import OrgsForm from './OrgsForm';
+import OrgFormPage from './OrgFormPage';
 import './App.css';
 
 class App extends Component {
@@ -15,12 +15,13 @@ class App extends Component {
     return (
       <div className="ui container">
         <div className="ui three item menu">
-          <NavLink className="item" activeClassName="active" to="/">Home</NavLink>
-          <NavLink className="item" activeClassName="active" to="/orgs">Organizations</NavLink>
-          <NavLink className="item" activeClassName="active" to="/orgs/new">New organization</NavLink>
+          <Link className="item"  to="/">Home</Link>
+          <Link className="item" to="/orgs">Organizations</Link>
+          <Link className="item" to="/orgs/new">New organization</Link>
         </div>
         <Route exact path="/orgs" component={OrgsPage}/>
-        <Route path="/orgs/new" component={OrgsForm}/>
+        <Route path="/orgs/new" component={OrgFormPage}/>
+        <Route path="/org/:_id" component={OrgFormPage}/>
       </div>
     );
   }

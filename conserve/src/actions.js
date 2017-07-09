@@ -1,5 +1,8 @@
 export const SET_ORGS = 'SET_ORGS';
 export const ADD_ORG = 'ADD_ORG';
+export const ORG_FETCHED = 'ORG_FETCHED';
+export const ORG_UPDATED = 'ORG_UPDATED';
+
 
 
 function handleResponse(response) {
@@ -26,6 +29,20 @@ export function addOrg(org) {
   }
 }
 
+export function orgFetched(org) {
+  return {
+    type: ORG_FETCHED,
+    org
+  }
+}
+
+export function orgUpdated(org) {
+  return {
+    type: ORG_UPDATED,
+    org
+  }
+}
+
 export function saveOrg(data) {
   return dispatch => {
     return fetch('/api/orgs', {
@@ -35,7 +52,20 @@ export function saveOrg(data) {
         "Content-Type": "application/json"
       }
     }).then(handleResponse)
-    .then(dataa => dispatch(addOrg(data.org)));
+    .then(data => dispatch(addOrg(data.org)));
+  }
+}
+
+export function updateOrg(data) {
+  return dispatch => {
+    return fetch(`/api/orgs/${data._id}`, {
+      method: 'put',
+      body: JSON.stringify(data),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    }).then(handleResponse)
+    .then(data => dispatch(orgUpdated(data.org)));
   }
 }
 
@@ -44,5 +74,13 @@ export function fetchOrgs() {
     fetch('http://localhost:8080/api/orgs')
       .then(res => res.json())
       .then(data => dispatch(setOrgs(data.orgs)));
+  }
+}
+
+export function fetchOrg(id) {
+  return dispatch => {
+    fetch(`http://localhost:8080/api/orgs/${id}`)
+      .then(res => res.json())
+      .then(data => dispatch(orgFetched(data.org)));
   }
 }

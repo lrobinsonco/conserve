@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import OrgsList from './OrgsList';
 import { connect } from 'react-redux';
 import {fetchOrgs} from './actions';
@@ -19,8 +20,8 @@ class OrgsPage extends React.Component{
 }
 
 OrgsPage.propTypes = {
-  orgs: React.PropTypes.array.isRequired,
-  fetchOrgs: React.PropTypes.func.isRequired
+  orgs: PropTypes.array.isRequired,
+  fetchOrgs: PropTypes.func.isRequired
 }
 
 function mapStateToProps(state){

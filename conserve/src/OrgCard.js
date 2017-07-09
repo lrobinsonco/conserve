@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 export default function OrgCard({ org }) {
   return (
@@ -9,10 +11,16 @@ export default function OrgCard({ org }) {
       <div className="content">
         <div className="header">{org.org}</div>
         </div>
+        <div className="extra content">
+          <div className="ui two buttons">
+            <Link to={`/org/${org._id}`} className="ui basic button green">Edit</Link>
+            <Link className="ui basic button red">Delete</Link>
+          </div>
+        </div>
     </div>
   );
 }
 
 OrgCard.propTypes = {
-  org: React.PropTypes.object.isRequired
+  org: PropTypes.object.isRequired
 }

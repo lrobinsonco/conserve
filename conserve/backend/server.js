@@ -42,6 +42,32 @@ mongodb.MongoClient.connect(dbUrl, function(err, db) {
     }
   })
 
+  app.put('/api/orgs/:_id', (req, res) => {
+    const { errors, isValid } = validate(req.body);
+
+    if (isValid) {
+      const { org, logo } =req.body;
+      db.collection('orgs').findOneAndUpdate(
+        { _id: new mongodb.ObjectId(req.params._id) },
+        { $set: { org, logo} },
+        { returnOriginal: false },
+        (err, result) => {
+          if (err) { res.status(500).json({ errors: { global: err}}); return; }
+
+          res.json({ game: result.value });
+        }
+      )
+    } else {
+      res.status(400).json({ errors })
+    }
+  })
+
+  app.get('/api/orgs/:_id', (req, res) => {
+    db.collection('orgs').findOne({ _id: new mongodb.ObjectId(req.params._id) }, (err, org) => {
+      res.json({ org })
+    })
+  })
+
   app.use((req, res) => {
     res.status(404).json({
       errors: {
