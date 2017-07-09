@@ -1,4 +1,5 @@
 import React from 'react';
+import OrgCard from './OrgCard';
 
 export default function OrgsList({ orgs }){
   const emptyMessage = (
@@ -6,7 +7,9 @@ export default function OrgsList({ orgs }){
   );
 
   const orgsList = (
-    <p>organizations list</p>
+    <div className="ui four cards">
+      { orgs.map(org => <OrgCard org={org} key={org._id} />)}
+    </div>
   );
 
   return(
