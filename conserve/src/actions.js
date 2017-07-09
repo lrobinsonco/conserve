@@ -1,4 +1,6 @@
 export const SET_ORGS = 'SET_ORGS';
+export const ADD_ORG = 'ADD_ORG';
+
 
 function handleResponse(response) {
   if (response.ok) {
@@ -17,6 +19,13 @@ export function setOrgs(orgs){
   }
 }
 
+export function addOrg(org) {
+  return {
+    type: ADD_ORG,
+    org
+  }
+}
+
 export function saveOrg(data) {
   return dispatch => {
     return fetch('/api/orgs', {
@@ -26,6 +35,7 @@ export function saveOrg(data) {
         "Content-Type": "application/json"
       }
     }).then(handleResponse)
+    .then(dataa => dispatch(addOrg(data.org)));
   }
 }
 

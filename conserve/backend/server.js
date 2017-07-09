@@ -18,12 +18,12 @@ function validate(data) {
 
 app.use(cors())
 
-mongodb.MongoClient.connect(dbUrl, function(err, db){
+mongodb.MongoClient.connect(dbUrl, function(err, db) {
 
   app.get('/api/orgs', (req,res) => {
-    db.collection('orgs').find({}).toArray((err, orgs) => {
-      res.json({ orgs });
-    });
+      db.collection('orgs').find({}).toArray((err, orgs) => {
+        res.json({ orgs });
+      });
   });
 
   app.post('/api/orgs', (req,res) => {
