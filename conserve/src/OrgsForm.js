@@ -1,6 +1,7 @@
 import React from 'react';
 import classnames from 'classnames';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom'
 import { saveOrg } from './actions';
 
 class OrgsForm extends React.Component {
@@ -8,7 +9,8 @@ class OrgsForm extends React.Component {
     org: "",
     logo: "",
     errors: {},
-    loading: false
+    loading: false,
+    done: false
   }
 
 handleChange = (e) => {
@@ -38,7 +40,7 @@ handleSubmit = (e) => {
     const { org, logo } = this.state;
     this.setState({ loading: true });
     this.props.saveOrg({ org, logo}).then(
-      () => {},
+      () => { this.setState({ done: true })},
       (err) => err.response.json().then(({errors}) => this.setState({ errors, loading: false }))
     )
   }
@@ -47,7 +49,7 @@ handleSubmit = (e) => {
 
 
   render(){
-    return (
+    const form = (
       <form className={classnames('ui', 'form', { loading: this.state.loading })} onSubmit={this.handleSubmit}>
         <h1>Add new organization</h1>
 
@@ -83,6 +85,11 @@ handleSubmit = (e) => {
           <button className="ui primary button">Save</button>
         </div>
       </form>
+    )
+    return (
+      <div>
+        { this.state.done ? <Redirect to="/orgs" /> : form }
+      </div>
     );
   }
 }
