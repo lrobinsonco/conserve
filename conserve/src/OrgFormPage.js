@@ -11,8 +11,9 @@ class OrgFormPage extends React.Component {
   }
 
   componentDidMount = () => {
-    if (this.props.params._id) {
-      this.props.fetchOrg(this.props.params._id);
+    const { match } = this.props;
+    if (match.params._id) {
+      this.props.fetchOrg(match.params._id);
     }
   }
 

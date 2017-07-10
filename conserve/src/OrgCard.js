@@ -14,7 +14,7 @@ export default function OrgCard({ org, deleteOrg }) {
         <div className="extra content">
           <div className="ui two buttons">
             <Link to={`/org/${org._id}`} className="ui basic button green">Edit</Link>
-            <Link className="ui basic button red" onClick={() => deleteOrg(org._id)}>Delete</Link>
+            <div className="ui basic button red" onClick={() => deleteOrg(org._id)}>Delete</div>
           </div>
         </div>
     </div>
