@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 export default function OrgCard({ org, deleteOrg }) {
   return (
-    <div className="ui card">
+    <div className="ui link card">
       <div className="image">
         <img src={org.logo} alt="Organization Logo" />
       </div>
