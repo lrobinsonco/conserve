@@ -8,6 +8,7 @@ import {
 import OrgsPage from './OrgsPage';
 import OrgFormPage from './OrgFormPage';
 import OrgShow from './OrgShow';
+import Landing from './Landing'
 // import Image from './Image';
 import './App.css';
 
@@ -27,6 +28,7 @@ class App extends Component {
           <ActiveLink activeOnlyWhenExact to="/orgs" label="Orgs" />
           <ActiveLink activeOnlyWhenExact to="/orgs/new" label="Add New Org" />
         </div>
+        <Route exact path="/" component={Landing}/>
         <Route exact path="/orgs" component={OrgsPage}/>
         <Route path="/orgs/new" component={OrgFormPage}/>
         <Route path="/org/:_id" component={OrgShow}/>
