@@ -7,6 +7,8 @@ import {
 }from 'react-router-dom';
 import OrgsPage from './OrgsPage';
 import OrgFormPage from './OrgFormPage';
+import OrgShow from './OrgShow';
+// import Image from './Image';
 import './App.css';
 
 const ActiveLink = ({ label, to, activeOnlyWhenExact }) => (
@@ -18,6 +20,7 @@ const ActiveLink = ({ label, to, activeOnlyWhenExact }) => (
 class App extends Component {
   render() {
     return (
+
       <div className="ui container">
         <div className="ui three item menu">
           <ActiveLink activeOnlyWhenExact  to="/" label="Home" />
@@ -26,7 +29,7 @@ class App extends Component {
         </div>
         <Route exact path="/orgs" component={OrgsPage}/>
         <Route path="/orgs/new" component={OrgFormPage}/>
-        <Route path="/org/:_id" component={OrgFormPage}/>
+        <Route path="/org/:_id" component={OrgShow}/>
       </div>
     );
   }

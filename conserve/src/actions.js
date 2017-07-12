@@ -3,6 +3,7 @@ export const ADD_ORG = 'ADD_ORG';
 export const ORG_FETCHED = 'ORG_FETCHED';
 export const ORG_UPDATED = 'ORG_UPDATED';
 export const ORG_DELETED = 'ORG_DELETED';
+export const ORG_SHOW = 'ORG_SHOW';
 
 
 
@@ -45,6 +46,13 @@ export function orgUpdated(org) {
   }
 }
 
+export function orgShow(org) {
+  return {
+    type: ORG_SHOW,
+    org
+  }
+}
+
 export function orgDeleted(orgId) {
   return {
     type: ORG_DELETED,
@@ -75,6 +83,19 @@ export function updateOrg(data) {
       }
     }).then(handleResponse)
     .then(data => dispatch(orgUpdated(data.org)));
+  }
+}
+
+export function viewOrg(data) {
+  return dispatch => {
+    return fetch(`/api/orgs/${data._id}`, {
+      method: 'put',
+      body: JSON.stringify(data),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    }).then(handleResponse)
+    .then(data => dispatch(orgShow(data.org)));
   }
 }
 
