@@ -124,7 +124,7 @@ handleSubmit = (e) => {
           </div>
           <div className="column">
 
-        <div className="ten wide field" id="logo">
+        <div className="twelve wide field" id="logo">
           {this.state.logo !== '' && <img src={this.state.logo} alt="logo" className="ui centered huge bordered image" />}
         </div>
 

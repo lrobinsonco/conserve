@@ -42,6 +42,9 @@
 
 #form{
   padding-left: 50px;
+  background-image: url("./images/COplate-2.jpg");
+  background-repeat: round;
+  background-size: cover;
 }
 
 /*#logo{
