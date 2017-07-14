@@ -22,7 +22,7 @@ class App extends Component {
   render() {
     return (
 
-      <div className="ui container">
+      <div className="App">
         <div className="ui three item menu">
           <ActiveLink activeOnlyWhenExact  to="/" label="Home" />
           <ActiveLink activeOnlyWhenExact to="/orgs" label="Orgs" />

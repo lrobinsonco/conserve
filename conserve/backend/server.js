@@ -12,6 +12,11 @@ function validate(data) {
   let errors = {};
   if (data.org === '') errors.org = "Cannot be empty";
   if (data.logo === '') errors.logo = "Cannot be empty";
+  if (data.url === '') errors.url = "Cannot be empty";
+  if (data.desc === '') errors.desc = "Cannot be empty";
+
+
+
   const isValid = Object.keys(errors).length === 0
   return { errors, isValid };
 }
@@ -29,8 +34,8 @@ mongodb.MongoClient.connect(dbUrl, function(err, db) {
   app.post('/api/orgs', (req,res) => {
     const { errors, isValid } = validate(req.body);
     if (isValid) {
-      const { org, logo } = req.body;
-      db.collection('orgs').insert({ org, logo }, (err, result) => {
+      const { org, logo, url, desc } = req.body;
+      db.collection('orgs').insert({ org, logo, url, desc }, (err, result) => {
         if (err) {
           res.status(500).json({ errors: { global: "Something went wrong"}})
         } else {
@@ -46,10 +51,10 @@ mongodb.MongoClient.connect(dbUrl, function(err, db) {
     const { errors, isValid } = validate(req.body);
 
     if (isValid) {
-      const { org, logo } =req.body;
+      const { org, logo, url, desc } =req.body;
       db.collection('orgs').findOneAndUpdate(
         { _id: new mongodb.ObjectId(req.params._id) },
-        { $set: { org, logo} },
+        { $set: { org, logo, url, desc } },
         { returnOriginal: false },
         (err, result) => {
           if (err) { res.status(500).json({ errors: { global: err}}); return; }

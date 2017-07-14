@@ -21,9 +21,9 @@ class ShowOrg extends React.Component {
        <a className="ui large image">
          <img src={org.logo} alt="Organization Logo" />
        </a>
-       <a className="header">{org.org}</a>
+       <a className="header" href={org.url}>{org.org}</a>
        <div className="description">
-         <p>Description goes here</p>
+         <p>{org.desc}</p>
        </div>
      </div>
    );

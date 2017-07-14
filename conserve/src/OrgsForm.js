@@ -1,5 +1,6 @@
 import React from 'react';
 import classnames from 'classnames';
+import './App.css';
 
 
 
@@ -8,6 +9,8 @@ class OrgsForm extends React.Component {
     _id: this.props.org ? this.props.org._id : null,
     org: this.props.org ? this.props.org.org : '',
     logo: this.props.org ? this.props.org.logo : '',
+    url: this.props.org ? this.props.org.url : '',
+    desc: this.props.org ? this.props.org.desc : '',
     errors: {},
     loading: false
   }
@@ -16,7 +19,9 @@ class OrgsForm extends React.Component {
   this.setState({
     _id: nextProps.org._id,
     org: nextProps.org.org,
-    logo: nextProps.org.logo
+    logo: nextProps.org.logo,
+    url: nextProps.org.url,
+    desc: nextProps.org.desc
   })
   }
 
@@ -41,13 +46,15 @@ handleSubmit = (e) => {
   let errors = {};
   if (this.state.org === '') errors.org = "Cannot be empty";
   if (this.state.logo === '') errors.logo = "Cannot be empty";
+  if (this.state.url === '') errors.url = "Cannot be empty";
+
   this.setState({ errors });
   const isValid = Object.keys(errors).length === 0
 
   if (isValid) {
-    const { _id, org, logo } = this.state;
+    const { _id, org, logo, url, desc } = this.state;
     this.setState({ loading: true });
-    this.props.saveOrg({ _id, org, logo})
+    this.props.saveOrg({ _id, org, logo, url, desc})
       .catch((err) => err.response.json().then(({errors}) => this.setState({ errors, loading: false})));
       }
     }
@@ -56,12 +63,14 @@ handleSubmit = (e) => {
 
   render(){
     const form = (
-      <form className={classnames('ui', 'form', { loading: this.state.loading })} onSubmit={this.handleSubmit}>
+      <form id="form" className={classnames('ui', 'big form', { loading: this.state.loading })} onSubmit={this.handleSubmit}>
+        <div className="ui two column grid">
+          <div className="column">
         <h1>Add new organization</h1>
 
         {!!this.state.errors.global && <div className='ui negative message'><p>{this.state.errors.global}</p></div>}
 
-        <div className={classnames('field', { error: !!this.state.errors.org})}>
+        <div className={classnames('twenty wide field', { error: !!this.state.errors.org})}>
           <label htmlFor="org">Organization</label>
           <input
             name="org"
@@ -73,7 +82,8 @@ handleSubmit = (e) => {
           />
           <span>{this.state.errors.org}</span>
         </div>
-        <div className={classnames('field', { error: !!this.state.errors.logo})}>
+
+        <div className={classnames('twenty wide field', { error: !!this.state.errors.logo})}>
           <label htmlFor="logo">Logo URL</label>
           <input
             name="logo"
@@ -81,14 +91,48 @@ handleSubmit = (e) => {
             onChange={this.handleChange}
             id="logo"
             placeholder="copy and paste organization logo"
+
           />
           <span>{this.state.errors.logo}</span>
         </div>
-        <div className="field">
-          {this.state.logo !== '' && <img src={this.state.logo} alt="logo" className="ui small bordered image" />}
+
+          <div className={classnames('twenty wide field', { error: !!this.state.errors.url})}>
+            <label htmlFor="url">Home Page</label>
+            <input
+              name="url"
+              value={this.state.url}
+              onChange={this.handleChange}
+              id="url"
+              placeholder="copy and paste organization url"
+
+            />
+            <span>{this.state.errors.url}</span>
+          </div>
+
+          <div className={classnames('twenty wide field', { error: !!this.state.errors.desc})}>
+            <label htmlFor="description">Current Project</label>
+            <textarea rows ="4"
+              name="desc"
+              value={this.state.desc}
+              onChange={this.handleChange}
+              id="desc"
+              placeholder="enter current project/s description"
+
+            />
+            <span>{this.state.errors.desc}</span>
+          </div>
+          </div>
+          <div className="column">
+
+        <div className="ten wide field" id="logo">
+          {this.state.logo !== '' && <img src={this.state.logo} alt="logo" className="ui centered huge bordered image" />}
         </div>
+
         <div className="field">
           <button className="ui primary button">Save</button>
+        </div>
+
+      </div>
         </div>
       </form>
     )
