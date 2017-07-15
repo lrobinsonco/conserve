@@ -113,7 +113,7 @@ export function deleteOrg(id) {
 
 export function fetchOrgs() {
   return dispatch => {
-    fetch(API_BASE_URL + '/api/orgs')
+    fetch('https://conservebackend.herokuapp.com/api/orgs')
       .then(res => res.json())
       .then(data => dispatch(setOrgs(data.orgs)));
   }
