@@ -75,7 +75,7 @@ export function saveOrg(data) {
 
 export function updateOrg(data) {
   return dispatch => {
-    return fetch(`/api/orgs/${data._id}`, {
+    return fetch(API_BASE_URL + `/api/orgs/${data._id}`, {
       method: 'put',
       body: JSON.stringify(data),
       headers: {
@@ -88,7 +88,7 @@ export function updateOrg(data) {
 
 export function viewOrg(data) {
   return dispatch => {
-    return fetch(`/api/orgs/${data._id}`, {
+    return fetch(API_BASE_URL + `/api/orgs/${data._id}`, {
       method: 'put',
       body: JSON.stringify(data),
       headers: {
@@ -101,7 +101,7 @@ export function viewOrg(data) {
 
 export function deleteOrg(id) {
   return dispatch => {
-    return fetch(`/api/orgs/${id}`, {
+    return fetch(API_BASE_URL + `/api/orgs/${id}`, {
       method: 'delete',
       headers: {
         "Content-Type": "application/json"
@@ -113,7 +113,7 @@ export function deleteOrg(id) {
 
 export function fetchOrgs() {
   return dispatch => {
-    fetch('https://conservebackend.herokuapp.com/api/orgs')
+    fetch(API_BASE_URL + '/api/orgs')
       .then(res => res.json())
       .then(data => dispatch(setOrgs(data.orgs)));
   }
@@ -121,7 +121,7 @@ export function fetchOrgs() {
 
 export function fetchOrg(id) {
   return dispatch => {
-    fetch(`https://conservebackend.herokuapp.com/api/orgs/${id}`)
+    fetch(API_BASE_URL + `/api/orgs/${id}`)
       .then(res => res.json())
       .then(data => dispatch(orgFetched(data.org)));
   }
