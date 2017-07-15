@@ -5,7 +5,7 @@ export const ORG_UPDATED = 'ORG_UPDATED';
 export const ORG_DELETED = 'ORG_DELETED';
 export const ORG_SHOW = 'ORG_SHOW';
 
-
+const API_BASE_URL = /localhost/.test(window.location.href) ? 'http://localhost:8080' : 'https://conservebackend.herokuapp.com'
 
 
 function handleResponse(response) {
@@ -62,7 +62,7 @@ export function orgDeleted(orgId) {
 
 export function saveOrg(data) {
   return dispatch => {
-    return fetch('/api/orgs', {
+    return fetch(API_BASE_URL + '/api/orgs', {
       method: 'post',
       body: JSON.stringify(data),
       headers: {
