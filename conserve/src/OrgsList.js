@@ -8,7 +8,7 @@ export default function OrgsList({ orgs, deleteOrg }){
   );
 
   const orgsList = (
-    <div className="ui four cards">
+    <div id="list" className="ui four cards">
       { orgs.map(org => <OrgCard org={org} key={org._id} deleteOrg={deleteOrg} />)}
     </div>
   );
