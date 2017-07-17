@@ -66,12 +66,12 @@ handleSubmit = (e) => {
       <form id="form" className={classnames('ui', 'big form', { loading: this.state.loading })} onSubmit={this.handleSubmit}>
         <div className="ui two column grid">
           <div className="column">
-        <h1>Add new organization</h1>
+        <h1 >Add new organization</h1>
 
         {!!this.state.errors.global && <div className='ui negative message'><p>{this.state.errors.global}</p></div>}
 
         <div className={classnames('twenty wide field', { error: !!this.state.errors.org})}>
-          <label htmlFor="org">Organization</label>
+          <label className="ui horizontal label" htmlFor="org">Organization</label>
           <input
             name="org"
             value={this.state.org}
@@ -84,7 +84,7 @@ handleSubmit = (e) => {
         </div>
 
         <div className={classnames('twenty wide field', { error: !!this.state.errors.logo})}>
-          <label htmlFor="logo">Logo URL</label>
+          <label className="ui horizontal label" htmlFor="logo">Logo URL</label>
           <input
             name="logo"
             value={this.state.logo}
@@ -97,7 +97,7 @@ handleSubmit = (e) => {
         </div>
 
           <div className={classnames('twenty wide field', { error: !!this.state.errors.url})}>
-            <label htmlFor="url">Home Page</label>
+            <label className="ui horizontal label" htmlFor="url">Home Page</label>
             <input
               name="url"
               value={this.state.url}
@@ -110,7 +110,7 @@ handleSubmit = (e) => {
           </div>
 
           <div className={classnames('twenty wide field', { error: !!this.state.errors.desc})}>
-            <label htmlFor="description">Current Project</label>
+            <label className="ui horizontal label" htmlFor="description">Current Project</label>
             <textarea rows ="4"
               name="desc"
               value={this.state.desc}
