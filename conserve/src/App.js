@@ -23,7 +23,7 @@ class App extends Component {
     return (
 
       <div className="App">
-        <div className="ui three item menu">
+        <div className="ui massive blue three item inverted menu">
           <ActiveLink activeOnlyWhenExact  to="/" label="Home" />
           <ActiveLink activeOnlyWhenExact to="/orgs" label="Orgs" />
           <ActiveLink activeOnlyWhenExact to="/orgs/new" label="Add New Org" />

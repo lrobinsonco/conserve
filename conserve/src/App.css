@@ -26,9 +26,9 @@
 
 
 .landing{
-  display: flex;
+  /*display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: center;*/
   height: 100vh;
   width: 100vw;
   background-image: url("./images/mountain.jpg");
@@ -37,14 +37,14 @@
   background-color: rgba(0,0,0,0.5);
   padding: 0;
   margin: -25;
-  color: green;
+  color: #115836;
   font-size: 100em;
 }
 
 html{
   font-family: 'Overlock SC', cursive;
 }
-h1, h2, h3, h4, h5{
+h1, h2, h3, h4, h5, {
   font-family: 'Overlock SC', cursive;
 }
 /*.App {
@@ -53,8 +53,23 @@ h1, h2, h3, h4, h5{
   font-family: 'Cabin Sketch', cursive;
 }*/
 
+#landing-title{
+  justify-content: center;
+  font-size: 4rem;
+  font-family: 'Overlock SC', cursive;
+  color: #115836
+}
+
+
+.ui.raised {
+  background:#7f7f7f;
+  background:rgba(255,255,255,0.5);
+}
+
 #form{
   padding-left: 50px;
+  font-family: 'Overlock SC', cursive;
+  color: #115836
   /*background-image: url("./images/COplate-2.jpg");
   background-repeat: round;
   background-size: cover;*/
@@ -63,6 +78,8 @@ h1, h2, h3, h4, h5{
 #list{
   padding-left: 25px;
   padding-right: 25px;
+  font-family: 'Overlock SC', cursive;
+  color: #115836
 }
 
 /*#logo{
