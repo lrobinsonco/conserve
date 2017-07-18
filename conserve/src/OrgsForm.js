@@ -66,7 +66,6 @@ handleSubmit = (e) => {
       <form id="form" className={classnames('ui', 'big form', { loading: this.state.loading })} onSubmit={this.handleSubmit}>
         <div className="ui two column grid">
           <div className="column">
-        <h1 >Add new organization</h1>
 
         {!!this.state.errors.global && <div className='ui negative message'><p>{this.state.errors.global}</p></div>}
 
@@ -77,7 +76,7 @@ handleSubmit = (e) => {
             value={this.state.org}
             onChange={this.handleChange}
             id="org"
-            placeholder="enter organization"
+            placeholder="enter organization name"
 
           />
           <span>{this.state.errors.org}</span>
@@ -124,22 +123,28 @@ handleSubmit = (e) => {
           </div>
           <div className="column">
 
+            <div className="field">
+              <button className="ui primary button">Save</button>
+            </div>
+
         <div className="twelve wide field" id="logo">
           {this.state.logo !== '' && <img src={this.state.logo} alt="logo" className="ui centered huge bordered image" />}
         </div>
 
-        <div className="field">
-          <button className="ui primary button">Save</button>
-        </div>
+
 
       </div>
         </div>
       </form>
     )
     return (
-      <div>
+      <div id="addPage">
+        <br></br>
+      <div id="formBanner" className="ui raised centered very padded text container segment">
+      <h2 id="h2Headform" className="ui header">Add new organization</h2>
+    </div>
         { form }
-      </div>
+    </div>
     );
   }
 }

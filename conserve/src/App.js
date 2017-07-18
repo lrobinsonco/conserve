@@ -42,9 +42,9 @@ class App extends Component {
             </div>
           </div>
           <div className="seven wide column">
-            <h4 className="ui header">threequarterr websites</h4>
-            <br></br>
             <p id="footer-info">©Colorado Conservation Conversation | 2017</p>
+            <br></br>
+            <h4 className="ui header">threequarterr.com</h4>
           </div>
         </div>
       </div>
