@@ -20,7 +20,7 @@ export default function OrgCard({ org, deleteOrg }) {
             <div className="ui basic button red" onClick={() => deleteOrg(org._id)}>Delete</div>
           </div>
         </div> */}
-                    <div className="ui basic button red" onClick={() => deleteOrg(org._id)}>Delete</div>
+                    {/* <div className="ui basic button red" onClick={() => deleteOrg(org._id)}>Delete</div> */}
     </div>
   );
 }

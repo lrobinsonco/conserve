@@ -3,6 +3,7 @@ import React from 'react';
 // import { Link } from 'react-router-dom';
 import {fetchOrg} from './actions';
 import { connect } from 'react-redux';
+import volunteer from './images/volunteer.jpeg'
 
 
 class ShowOrg extends React.Component {
@@ -17,18 +18,25 @@ class ShowOrg extends React.Component {
      return null
    }
    return (
+     <div id="show" className="container">
      <div className="ui two column grid">
      <div className="ui column">
-       <a className="ui large image">
+       <a className="ui bordered large image" href={org.url}>
          <img src={org.logo} alt="Organization Logo" />
        </a>
      </div>
      <div className="ui column">
-       <a className="header" href={org.url}>{org.org}</a>
+       <a href={org.url}>
+       <h2 id="showHead" className="header">{org.org}</h2>
+     </a>
        <div className="description">
          <p>{org.desc}</p>
        </div>
+       <div className="ui container">
+       <img id="insta" className="ui huge image" src={volunteer} alt="instagram"/>
      </div>
+     </div>
+   </div>
    </div>
    );
  }
@@ -45,7 +53,8 @@ function mapStateToProps(state, props) {
   return { org: null };
 }
 
-export default connect(mapStateToProps, { fetchOrg })(ShowOrg);
+export default connect(mapStateToProps, { fetchOrg,
+volunteer })(ShowOrg);
 
 
 // ShowOrg.propTypes = {

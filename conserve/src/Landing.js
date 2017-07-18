@@ -14,8 +14,8 @@ class Landing extends React.Component {
 
         <div className="ui raised centered very padded text container segment">
           <h2 id="h2Head" className="ui centered header">Be Part of the Conversation</h2>
-          <p>Domestic dogs inherited complex behaviors, such as bite inhibition, therekwrhjkt ewthrtjhrejtherjtw jwthrejthrejthrejthr f</p>
-          <p>Domestic dogs inherited complex behaviors, such as bite inhibition,</p>
+          <p>Colorado is blessed with non-profit organizations dedicated to conservation and stewardship.</p>
+          <p>From building and maintaining trails, advocating for public lands, to teaching stewardship skills to tomorrow’s leaders, these organizations are literally blazing the trail to Colorado’s future.</p>
           <div id="loginB" className="ui buttons">
             <button className="fluid ui positive button">Sign up</button>
             <div className="or"></div>
