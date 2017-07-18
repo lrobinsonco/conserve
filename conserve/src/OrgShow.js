@@ -17,15 +17,19 @@ class ShowOrg extends React.Component {
      return null
    }
    return (
-     <div className="ui item">
+     <div className="ui two column grid">
+     <div className="ui column">
        <a className="ui large image">
          <img src={org.logo} alt="Organization Logo" />
        </a>
+     </div>
+     <div className="ui column">
        <a className="header" href={org.url}>{org.org}</a>
        <div className="description">
          <p>{org.desc}</p>
        </div>
      </div>
+   </div>
    );
  }
 }
