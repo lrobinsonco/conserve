@@ -22,7 +22,7 @@ class ShowOrg extends React.Component {
      <div className="ui two column grid">
      <div className="ui column">
        <a href={org.url}>
-         <img className="ui bordered image" src={org.logo} alt="Organization Logo" />
+         <img className="ui fluid circular image" src={org.logo} alt="Organization Logo" />
        </a>
      </div>
      <div className="ui column">
