@@ -21,15 +21,15 @@ class ShowOrg extends React.Component {
      <div id="show" className="container">
      <div className="ui two column grid">
      <div className="ui column">
-       <a className="ui bordered large image" href={org.url}>
-         <img src={org.logo} alt="Organization Logo" />
+       <a href={org.url}>
+         <img className="ui bordered image" src={org.logo} alt="Organization Logo" />
        </a>
      </div>
      <div className="ui column">
        <a href={org.url}>
        <h2 id="showHead" className="header">{org.org}</h2>
      </a>
-       <div className="description">
+       <div id="desc" className="ui raised centered padded text container segment">
          <p>{org.desc}</p>
        </div>
        <div className="ui container">

@@ -207,6 +207,16 @@ h1, h2, h3, h4, h5, {
   justify-content: center !important;
   align-items: center;
 }
+
+#desc{
+  display: flex;
+  font-family: 'Overlock SC', cursive;
+  color: #115836;
+  background: #7f7f7f;
+  background: rgba(255,255,255,0.5);
+  width: 100%;
+}
+
 /*#insta{
   image-resolution: snap;
 }*/
