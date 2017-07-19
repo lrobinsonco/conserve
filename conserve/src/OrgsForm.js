@@ -16,6 +16,9 @@ class OrgsForm extends React.Component {
     url: this.props.org
       ? this.props.org.url
       : '',
+    title: this.props.org
+        ? this.props.org.title
+        : '',
     desc: this.props.org
       ? this.props.org.desc
       : '',
@@ -24,7 +27,12 @@ class OrgsForm extends React.Component {
   }
 
   componentWillReceiveProps = (nextProps) => {
-    this.setState({_id: nextProps.org._id, org: nextProps.org.org, logo: nextProps.org.logo, url: nextProps.org.url, desc: nextProps.org.desc})
+    this.setState({_id: nextProps.org._id,
+      org: nextProps.org.org,
+      logo: nextProps.org.logo,
+      url: nextProps.org.url,
+      title: nextProps.org.title,
+      desc: nextProps.org.desc})
   }
 
   handleChange = (e) => {
@@ -58,16 +66,16 @@ class OrgsForm extends React.Component {
     const isValid = Object.keys(errors).length === 0
 
     if (isValid) {
-      const {_id, org, logo, url, desc} = this.state;
+      const {_id, org, logo, url, title, desc} = this.state;
       this.setState({loading: true});
-      this.props.saveOrg({_id, org, logo, url, desc}).catch((err) => err.response.json().then(({errors}) => this.setState({errors, loading: false})));
+      this.props.saveOrg({_id, org, logo, url, title, desc}).catch((err) => err.response.json().then(({errors}) => this.setState({errors, loading: false})));
     }
   }
 
   render() {
     const form = (
       <form id="form" className={classnames('ui', 'big form', {loading: this.state.loading})} onSubmit={this.handleSubmit}>
-        <div className="ui two column grid">
+        <div id="formCol" className="ui two column grid">
           <div className="column">
 
             {!!this.state.errors.global && <div className='ui negative message'>
@@ -97,6 +105,15 @@ class OrgsForm extends React.Component {
               <input name="url" value={this.state.url} onChange={this.handleChange} id="url" placeholder="copy and paste organization url"/>
               <span>{this.state.errors.url}</span>
             </div>
+
+            <div className={classnames('twenty wide field', {
+              error: !!this.state.errors.title
+            })}>
+              <label className="ui horizontal label" htmlFor="title">Project Title</label>
+              <input name="title" value={this.state.title} onChange={this.handleChange} id="title" placeholder="enter project title"/>
+              <span>{this.state.errors.title}</span>
+            </div>
+
 
             <div className={classnames('twenty wide field', {
               error: !!this.state.errors.desc

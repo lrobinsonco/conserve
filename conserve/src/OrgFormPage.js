@@ -17,13 +17,13 @@ class OrgFormPage extends React.Component {
     }
   }
 
-  saveOrg = ({_id, org, logo, url, desc }) => {
+  saveOrg = ({_id, org, logo, url, title, desc }) => {
     if (_id) {
-      return this.props.updateOrg({ _id, org, logo, url, desc }).then(
+      return this.props.updateOrg({ _id, org, logo, url, title, desc }).then(
         () => { this.setState({ redirect: true })},
       );
     } else {
-      return this.props.saveOrg({ org, logo, url, desc }).then(
+      return this.props.saveOrg({ org, logo, url, title, desc }).then(
         () => { this.setState({ redirect: true })},
       );
     }

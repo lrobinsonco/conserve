@@ -106,9 +106,9 @@ h1, h2, h3, h4, h5, {
 
 #addPage{
   background-image: url("./images/SpoonGraphics-Topographic-Map-5.png");
-  background-repeat: round;
+  background-repeat: no-repeat;
   background-size: cover;
-  height: 100vh;
+  height: 110vh;
   width: 100vw;
 }
 
@@ -133,6 +133,10 @@ h1, h2, h3, h4, h5, {
   color: #115836;
   min-height:100%;
   padding-bottom:60px;
+}
+
+#formCol{
+  /*margin-bottom: 20em;*/
 }
 
 .ui.horizontal.label{
@@ -210,12 +214,16 @@ h1, h2, h3, h4, h5, {
 }
 
 #desc{
-  display: flex;
+  /*display: flex;*/
   font-family: 'Overlock SC', cursive;
   color: #115836;
   background: #7f7f7f;
   background: rgba(255,255,255,0.5);
   width: 100%;
+}
+
+#social{
+  margin-top: 1em;
 }
 
 /*#insta{
