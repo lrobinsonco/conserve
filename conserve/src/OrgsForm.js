@@ -90,13 +90,6 @@ class OrgsForm extends React.Component {
               <span>{this.state.errors.org}</span>
             </div>
 
-            <div className={classnames('twenty wide field', {
-              error: !!this.state.errors.logo
-            })}>
-              <label className="ui horizontal label" htmlFor="logo">Logo URL</label>
-              <input name="logo" value={this.state.logo} onChange={this.handleChange} id="logo" placeholder="copy and paste organization logo"/>
-              <span>{this.state.errors.logo}</span>
-            </div>
 
             <div className={classnames('twenty wide field', {
               error: !!this.state.errors.url
@@ -114,6 +107,13 @@ class OrgsForm extends React.Component {
               <span>{this.state.errors.title}</span>
             </div>
 
+            <div className={classnames('twenty wide field', {
+                error: !!this.state.errors.location
+              })}>
+                <label className="ui horizontal label" htmlFor="location">location</label>
+                <input name="location" value={this.state.location} onChange={this.handleChange} id="location" placeholder="enter project location"/>
+                <span>{this.state.errors.location}</span>
+              </div>
 
             <div className={classnames('twenty wide field', {
               error: !!this.state.errors.desc
@@ -124,6 +124,16 @@ class OrgsForm extends React.Component {
             </div>
           </div>
           <div className="column">
+
+
+
+            <div className={classnames('twenty wide field', {
+              error: !!this.state.errors.logo
+            })}>
+              <label className="ui horizontal label" htmlFor="logo">Logo URL</label>
+              <input name="logo" value={this.state.logo} onChange={this.handleChange} id="logo" placeholder="copy and paste organization logo"/>
+              <span>{this.state.errors.logo}</span>
+            </div>
 
             {/* <div className="field">
               <button id="saveButton" className="ui primary button">Save</button>
