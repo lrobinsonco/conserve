@@ -5,7 +5,9 @@ import {Route, Link} from 'react-router-dom';
 import OrgsPage from './OrgsPage';
 import OrgFormPage from './OrgFormPage';
 import OrgShow from './OrgShow';
-import Landing from './Landing'
+import Landing from './Landing';
+import SignIn from './SignIn'
+
 // import Image from './Image';
 import './App.css';
 
@@ -22,13 +24,16 @@ class App extends Component {
       <div className="App">
         <div id="topMenu" className="ui massive blue three item inverted menu">
           <ActiveLink activeOnlyWhenExact to="/" label="Home"/>
-          <ActiveLink activeOnlyWhenExact to="/orgs" label="Orgs"/>
-          <ActiveLink activeOnlyWhenExact to="/orgs/new" label="Add New Org"/>
+          <ActiveLink activeOnlyWhenExact to="/orgs" label="View Organizations"/>
+          <ActiveLink activeOnlyWhenExact to="/SignIn" label="Add New Organization"/>
         </div>
         <Route exact path="/" component={Landing}/>
         <Route exact path="/orgs" component={OrgsPage}/>
         <Route path="/orgs/new" component={OrgFormPage}/>
         <Route path="/org/:_id" component={OrgShow}/>
+        <Route path="/SignIn" component={SignIn}/>
+
+
         <div id="footer" className="ui blue secondary inverted vertical footer segment">
           <div className="ui container">
             <div className="ui stackable inverted divided equal height stackable grid">

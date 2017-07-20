@@ -55,7 +55,7 @@ h1, h2, h3, h4, h5, {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  height: 100vh;
+  height: 120vh;
   width: 100vw;
   background-image: url("./images/mountain.jpg");
   background-repeat: no-repeat;
@@ -67,14 +67,40 @@ h1, h2, h3, h4, h5, {
   font-size: 100em;
 }
 
+#sign{
+  background-image: url("./images/C-C-C.png");
+  height: 90vh;
+  width: 100vw;
+  padding-top: 10%;
+}
 
+#signContainer{
+  background-color: #2185d0;
+  width: 38%;
+  height: 85%;
+}
+
+#signForm{
+  font-size: 3vh;
+  padding: 5%;
+}
+
+#landing-header{
+  display:flex;
+  flex-direction: row;
+}
+
+#logoLand{
+  margin-top: 1em;
+}
 
 #landing-title {
   /*justify-content: center;*/
-  font-size: 4rem;
+  font-size: 3rem;
   font-family: 'Overlock SC', cursive;
   color: #115836;
-  margin-top: 0em;
+  margin-top: 1em;
+  margin-left: 2em;
 }
 
 
