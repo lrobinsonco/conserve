@@ -58,6 +58,7 @@ h1, h2, h3, h4, h5, {
   height: 120vh;
   width: 100vw;
   background-image: url("./images/mountain.jpg");
+  background-attachment: fixed;
   background-repeat: no-repeat;
   background-size:cover;
   background-color: rgba(0,0,0,0.5);
@@ -68,9 +69,10 @@ h1, h2, h3, h4, h5, {
 }
 
 #sign{
-  background-image: url("./images/C-C-C.png");
+  background-image: url("./images/loginfinal.png");
+  background-size: cover;
   height: 90vh;
-  width: 100vw;
+  width: 105vw;
   padding-top: 10%;
 }
 
